@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Mortgage Calculator</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-dark">
+            <a id="navbar" class="navbar-light" href="#">Navbar</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">Action 1</a>
+                            <a class="dropdown-item" href="#">Action 2</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <!-- Begin page content -->
+    <div class="container-fluid p-lg-5">
+        <div class="row">
+            <div class="col-sm-6">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Loan Type:</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Loan Type">
+                        <small class="form-text text-muted">the total full amount of your loan.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Loan Amount:</label>
+                        <input type="text" class="form-control" id="loanAmount" aria-describedby="emailHelp"
+                            placeholder="Loan Amount" value="15000">
+                        <small class="form-text text-muted">the total full amount of your loan.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Payments:</label>
+                        <input type="number" class="form-control" id="paymentTerm" placeholder="Payment term"
+                            value="60">
+                        <small class="form-text text-muted">the quantity of payments agreed to ay off
+                            the
+                            loan.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Rate:</label>
+                        <input type="text" class="form-control" id="rate" placeholder="Rate" value="3">
+                        <small id="rate" class="form-text text-muted">The anual interest rate (APR) agreed for the
+                            loan.</small>
+                    </div>
+                    <button id="submitBtn" class="btn btn-secondary">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm-6 order-first order-md-2">
+                <div class="row">
+                    <p>Your Monthly Payment Is:</p>
+                    <td id="monthlyPayments"></td>
+                </div>
+                <div class="row">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Total Principal</td>
+                            <td id="totalPrincipal"></td>
+                        </tr>
+                        <tr>
+                            <td>Total Interest</td>
+                            <td id="totalInterest"></td>
+                        </tr>
+                        <tr>
+                            <td>Total Cost</td>
+                            <td id="totalCost"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main role="main" class="container">
+        <hr>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Month</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Total Interest</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody id="resultsBody">
+                <!--Data goes here-->
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p class="text-center pb-2">Developed by Leo J. Barnuevo | Coder Foundry</p>
+    </footer>
+    <template id="resultsData-template">
+        <tr>
+            <td id="monthOut"></td>
+            <td id="paymentOut"></td>
+            <td id="principalOut"></td>
+            <td id="interestOut"></td>
+            <td id="totalInterestOut"></td>
+            <td id="balanceOut"></td>
+        </tr>
+    </template>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="js/site.js"></script>
+
+    <!--button event-->
+    <script>
+        document.getElementById("submitBtn").addEventListener("click", buildPaymentSchedule);
+    </script>
+</body>
+
+
+</html>
